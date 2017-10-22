@@ -1,4 +1,4 @@
-try{
+http.createServer(function (req, res) { res.writeHead(200, {'Content-Type': 'text/plain'}); res.send('it is running\n'); }).listen(process.env.PORT || 5000);
 const Discord = require('discord.js');
 const client = new Discord.Client();
 var sorry = {
@@ -35,7 +35,7 @@ client.on('message', msg => {
 
 
 
-http.createServer(function (req, res) { res.writeHead(200, {'Content-Type': 'text/plain'}); res.send('it is running\n'); }).listen(process.env.PORT || 5000);
+
 
 
 
@@ -58,5 +58,5 @@ function that(msg) {
 
     return y;
 };
-}
-catch(err){};
+
+
