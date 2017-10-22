@@ -34,19 +34,18 @@ client.on('message', msg => {
 
 
 
-var https = require('https');
-var fs = require('fs');
+var express = require('express');
+var app     = express();
 
-var options = {
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem')
-};
+app.set('port', (process.env.PORT || 5000));
 
-var a = https.createServer(options, function (req, res) {
-  res.writeHead(200);
-  res.end("hello world\n");
-}).listen(process.env.PORT || 5000)
-
+//For avoidong Heroku $PORT error
+app.get('/', function(request, response) {
+    var result = 'App is running'
+    response.send(result);
+}).listen(app.get('port'), function() {
+    console.log('App is running, server is listening on port ', app.get('port'));
+});
 
 
 
